@@ -1,0 +1,41 @@
+; Carbon copy of gulp-coffee sans source maps
+
+(= es     (require "event-stream")
+   jisp   (require "jisp")
+   gutil  (require "gulp-util")
+   Buffer (get (require "buffer") Buffer)
+   path   (require "path")
+   merge  (require "merge"))
+
+(= module.exports (fn opt (do
+
+   (def modifyFile file (do
+
+     (if (file.isNull) (return (this.emit "data" file))) ; pass along
+     (if (file.isStream) (return (this.emit "error" (new Error "gulp-jisp: Streaming not supported"))))
+
+     (= str  (file.contents.toString "utf8")
+        dest (gutil.replaceExtension file.path ".js"))
+
+     (= options (merge
+        (wrap:          yes
+         filename:      file.path
+         sourceFiles:   (list (path.basename file.path))
+         generatedFile: (path.basename dest))
+        opt))
+
+     (try
+       (= data (jisp.compile str options))
+       (catch err (return (this.emit "error"
+                                     (new Error err)))))
+
+     (= file.contents (new Buffer data))
+
+     (= file.path dest)
+     (this.emit "data" file)
+
+   )) ; / modifyFile
+
+   (es.through modifyFile)
+
+))) ; / module.exports

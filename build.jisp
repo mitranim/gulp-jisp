@@ -1,0 +1,22 @@
+(= fs (require "fs"))
+
+(console.log "-- loading compiler...")
+(= jisp      (require "jisp"))
+
+(def buildFile compiler ...filenames
+     (for filename filenames
+          (do (= srcPath   (+ "./src/" filename ".jisp")
+                 destpath  (+ "./lib/" filename ".js")
+                 src       (fs.readFileSync srcPath "utf8"))
+              (console.log (+ "-- compiling " filename "..."))
+              (= js (compiler.compile src))
+              (fs.writeFileSync destpath js "utf8"))))
+
+(def build jisp
+     (do (console.log "-- building...")
+         (buildFile jisp
+                         "index"
+                         )
+     (console.log "-- if you're reading this, compilation has succeeded!")))
+
+(build jisp)
