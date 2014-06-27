@@ -1,6 +1,6 @@
 {
   "name": "gulp-jisp",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "gulp plugin to compile jisp",
   "main": "./lib/index.js",
   "scripts": {
@@ -12,15 +12,13 @@
   ],
   "author": "Mitranim <me@mitranim.com> (http://www.mitranim.com/)",
   "license": "MIT",
-  "devDependencies": {
-    "jisp": "latest"
-  },
   "engines": {
     "node": ">= 0.9.0"
   },
   "dependencies": {
     "merge": "^1.1.3",
     "event-stream": "^3.1.5",
-    "gulp-util": "^2.2.18"
+    "gulp-util": "^2.2.18",
+    "jisp": "latest"
   }
 }
