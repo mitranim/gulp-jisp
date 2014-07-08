@@ -1,6 +1,6 @@
 {
   "name": "gulp-jisp",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "gulp plugin to compile jisp",
   "main": "./lib/index.js",
   "scripts": {
@@ -14,6 +14,10 @@
   "license": "MIT",
   "engines": {
     "node": ">= 0.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Mitranim/gulp-jisp.git"
   },
   "dependencies": {
     "merge": "^1.1.3",
