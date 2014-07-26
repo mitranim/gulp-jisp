@@ -3,7 +3,7 @@
 (= es     (require "event-stream")
    jisp   (require "jisp")
    gutil  (require "gulp-util")
-   Buffer (get (require "buffer") Buffer)
+   Buffer (require "buffer").Buffer
    path   (require "path")
    merge  (require "merge"))
 

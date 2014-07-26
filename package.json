@@ -1,6 +1,6 @@
 {
   "name": "gulp-jisp",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "gulp plugin to compile jisp",
   "main": "./lib/index.js",
   "scripts": {
